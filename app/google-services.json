@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "442782905643",
+    "firebase_url": "https://roommatefinder-50b30.firebaseio.com",
+    "project_id": "roommatefinder-50b30",
+    "storage_bucket": "roommatefinder-50b30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442782905643:android:a1e5edaf1993c51b4e416e",
+        "android_client_info": {
+          "package_name": "com.example.roommatefinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442782905643-jas5m1rmprvt1r8oflev2bbm15to3hs9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuNKvjK7c5zlEPu55a9trdJrlqJcifuf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442782905643-jas5m1rmprvt1r8oflev2bbm15to3hs9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
