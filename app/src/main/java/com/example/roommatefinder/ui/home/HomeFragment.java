@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.roommatefinder.R;
+import com.example.roommatefinder.ui.home.HomeViewModel;
 
 public class HomeFragment extends Fragment {
 
