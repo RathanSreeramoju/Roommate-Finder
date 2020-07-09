@@ -1,30 +1,60 @@
-package com.example.roommatefinder;
+package example.abhiandroid.searchviewexample;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ListView;
+import android.widget.SearchView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
-public class MainActivity extends AppCompatActivity {
+
+    ListView list;
+    ListViewAdapter adapter;
+    SearchView editsearch;
+    String[] rooms;
+    ArrayList<roomNames> arraylist = new ArrayList<roomNames>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_profile, R.id.navigation_post, R.id.navigation_favourites, R.id.navigation_schedule)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
+
+
+
+        roomsNameList = new String[]{"atwater","cote-des-neiges"};
+
+
+        list = (ListView) findViewById(R.id.listview);
+
+        for (int i = 0; i < roomsNameList.length; i++) {
+            roomsNames animalNames = new roomsNames(roomsNameList[i]);
+
+            arraylist.add(roomsNames);
+        }
+
+
+        adapter = new ListViewAdapter(this, arraylist);
+
+
+        list.setAdapter(adapter);
+
+
+        editsearch = (SearchView) findViewById(R.id.search);
+        editsearch.setOnQueryTextListener(this);
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String text = newText;
+        adapter.filter(text);
+        return false;
+    }
 }
