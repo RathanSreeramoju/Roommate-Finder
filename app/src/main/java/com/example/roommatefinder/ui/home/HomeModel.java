@@ -1,6 +1,10 @@
-package com.example.roommatefinder.ui.post;
+package com.example.roommatefinder.ui.home;
 
-public class Post {
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+
+public class HomeModel extends ViewModel {
     private String postKey;
     private String txt_title;
     private String txt_desc;
@@ -11,20 +15,8 @@ public class Post {
     private String txt_contact;
     private String userPhoto;
 
+    public HomeModel() {
 
-    public Post(){
-
-    }
-
-    public Post(String postKey, String txt_title, String txt_desc, String txt_roommates, String txt_gender, String txt_loc, String txt_contact, String userPhoto) {
-        this.postKey = postKey;
-        this.txt_title = txt_title;
-        this.txt_desc = txt_desc;
-        this.txt_roommates = txt_roommates;
-        this.txt_gender = txt_gender;
-        this.txt_loc = txt_loc;
-        this.txt_contact = txt_contact;
-        this.userPhoto = userPhoto;
     }
 
     public String getPostKey() {
