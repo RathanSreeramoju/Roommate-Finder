@@ -1,8 +1,9 @@
-package com.example.roommatefinder;
+package com.example.roommatefinder.Activty;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -11,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.roommatefinder.R;
+import com.example.roommatefinder.singletone.MySharedPref;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,12 +25,19 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     ProgressBar progressBar;
     EditText emailId, password;
     private FirebaseAuth mAuth;
+    private Context context;
+    private MySharedPref sharedPref;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        context = getApplicationContext();
+        //initi
+        sharedPref = new MySharedPref(context);
+        sharedPref.getInstance(context);
+
 
         emailId=findViewById(R.id.editText);
         password=findViewById(R.id.editText2);
@@ -69,11 +79,17 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
-                    finish();
+                    mAuth.getCurrentUser().sendEmailVerification();
+//                    sharedPref.setUserId(mAuth.getCurrentUser().getUid());
+//                    Toast.makeText(context, "user id is__"+mAuth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
+//                    sharedPref.getUserLoggedInData();
+//                    System.out.println("userId___"+sharedPref.UserId);
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                    Intent intent=new Intent(SignupActivity.this, LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    finish();
+                    Toast.makeText(SignupActivity.this, "You are successfully registered.", Toast.LENGTH_SHORT).show();
+//                    Intent intent=new Intent(SignupActivity.this, LoginActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    startActivity(intent);
                 }
                 else{
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){

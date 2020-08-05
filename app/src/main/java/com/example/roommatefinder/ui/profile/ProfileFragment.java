@@ -27,4 +27,10 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.fragment_profile, container, false);
+
+    }
 }
