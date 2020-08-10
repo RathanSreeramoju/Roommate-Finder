@@ -1,23 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splash_gradient_drawable"
     tools:context=".ui.post.PostFragment">
 
-    <TextView
-        android:id="@+id/text_post"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/add_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/profile_pic_oval_shape"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unit Type*"
+        android:textSize="18sp"
+        android:textColor="#838383"
+        app:layout_constraintTop_toBottomOf="@id/add_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/spin_unit"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <Spinner
+        android:id="@+id/spUnitType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:entries="@array/unit_type"
+        android:spinnerMode="dropdown"
+        android:paddingTop="@dimen/margin_5"
+        android:paddingBottom="@dimen/margin_5"
+        android:background="@drawable/editext_drawable"
+        app:layout_constraintTop_toBottomOf="@id/spin_unit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toTopOf="@id/spUnitType"
+        app:layout_constraintBottom_toBottomOf="@id/spUnitType"
+        app:layout_constraintEnd_toEndOf="@id/spUnitType"
+        android:src="@drawable/arrow_drop"
+        android:id="@+id/spUnitImg"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bed Rooms*"
+        android:textSize="18sp"
+        android:layout_marginTop="2dp"
+        android:textColor="#838383"
+        app:layout_constraintTop_toBottomOf="@id/spUnitType"
+        app:layout_constraintStart_toStartOf="@id/spUnitType"
+        android:id="@+id/spBedText"/>
+
+    <Spinner
+        android:id="@+id/spBedrooms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:entries="@array/bed_rooms"
+        android:spinnerMode="dropdown"
+        android:paddingTop="@dimen/margin_5"
+        android:paddingBottom="@dimen/margin_5"
+        android:background="@drawable/editext_drawable"
+        app:layout_constraintTop_toBottomOf="@id/spBedText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toTopOf="@id/spBedrooms"
+        app:layout_constraintBottom_toBottomOf="@id/spBedrooms"
+        app:layout_constraintEnd_toEndOf="@id/spBedrooms"
+        android:src="@drawable/arrow_drop"
+        android:id="@+id/spBedImg"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender*"
+        android:textSize="18sp"
+        android:layout_marginTop="2dp"
+        android:textColor="#838383"
+        app:layout_constraintTop_toBottomOf="@id/spBedrooms"
+        app:layout_constraintStart_toStartOf="@id/spBedrooms"
+        android:id="@+id/spGen"/>
+    <Spinner
+        android:id="@+id/spGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:entries="@array/Gender"
+        android:spinnerMode="dropdown"
+        android:paddingTop="@dimen/margin_5"
+        android:paddingBottom="@dimen/margin_5"
+        android:background="@drawable/editext_drawable"
+        app:layout_constraintTop_toBottomOf="@id/spGen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toTopOf="@id/spGender"
+        app:layout_constraintBottom_toBottomOf="@id/spGender"
+        app:layout_constraintEnd_toEndOf="@id/spGender"
+        android:src="@drawable/arrow_drop"
+        android:id="@+id/spGenImg"/>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/spGender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location*"
+            android:textSize="18sp"
+            android:textColor="#838383"/>
+
+        <EditText
+            android:layout_marginTop="8dp"
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#222831"
+            android:textColorHint="#222831"
+            android:ems="10"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:hint="Enter Location"
+            android:inputType="text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number*"
+            android:textSize="18sp"
+            android:textColor="#838383"
+            android:layout_marginTop="2dp"/>
+
+        <EditText
+            android:id="@+id/contact_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#222831"
+            android:textColorHint="#222831"
+            android:ems="10"
+            android:hint="Contact Number"
+            android:inputType="number"
+            android:background="@color/white"
+            android:padding="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price*"
+            android:textSize="18sp"
+            android:textColor="#838383"
+            android:layout_marginTop="2dp"/>
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#222831"
+            android:textColorHint="#222831"
+            android:hint="Enter Price"
+            android:inputType="number"
+            android:ems="10"
+            android:background="@color/white"
+            android:padding="5dp"/>
+        <Button
+            android:id="@+id/post"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Post"
+            android:layout_gravity="center"
+            android:textColor="#222831"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/contact_number"/>
+
+        <EditText
+            android:id="@+id/roomates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="Roommates"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_description"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
