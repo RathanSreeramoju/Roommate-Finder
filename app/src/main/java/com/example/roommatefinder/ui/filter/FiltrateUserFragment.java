@@ -1,5 +1,6 @@
 package com.example.roommatefinder.ui.filter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
