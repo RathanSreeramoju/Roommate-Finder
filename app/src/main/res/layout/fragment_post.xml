@@ -19,33 +19,33 @@
         android:background="@drawable/profile_pic_oval_shape"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Unit Type*"
-        android:textSize="18sp"
-        android:textColor="#838383"
-        app:layout_constraintTop_toBottomOf="@id/add_photo"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/spin_unit"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unit Type*"
+            android:textSize="18sp"
+            android:textColor="#838383"
+            app:layout_constraintTop_toBottomOf="@id/add_photo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/spin_unit"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"/>
 
-    <Spinner
-        android:id="@+id/spUnitType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_5"
-        android:entries="@array/unit_type"
-        android:spinnerMode="dropdown"
-        android:paddingTop="@dimen/margin_5"
-        android:paddingBottom="@dimen/margin_5"
-        android:background="@drawable/editext_drawable"
-        app:layout_constraintTop_toBottomOf="@id/spin_unit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"/>
+        <Spinner
+            android:id="@+id/spUnitType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5"
+            android:entries="@array/unit_type"
+            android:spinnerMode="dropdown"
+            android:paddingTop="@dimen/margin_5"
+            android:paddingBottom="@dimen/margin_5"
+            android:background="@drawable/editext_drawable"
+            app:layout_constraintTop_toBottomOf="@id/spin_unit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"/>
 
     <ImageView
         android:layout_width="30dp"
@@ -57,32 +57,32 @@
         android:id="@+id/spUnitImg"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bed Rooms*"
-        android:textSize="18sp"
-        android:layout_marginTop="2dp"
-        android:textColor="#838383"
-        app:layout_constraintTop_toBottomOf="@id/spUnitType"
-        app:layout_constraintStart_toStartOf="@id/spUnitType"
-        android:id="@+id/spBedText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bed Rooms*"
+            android:textSize="18sp"
+            android:layout_marginTop="2dp"
+            android:textColor="#838383"
+            app:layout_constraintTop_toBottomOf="@id/spUnitType"
+            app:layout_constraintStart_toStartOf="@id/spUnitType"
+            android:id="@+id/spBedText"/>
 
-    <Spinner
-        android:id="@+id/spBedrooms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_5"
-        android:entries="@array/bed_rooms"
-        android:spinnerMode="dropdown"
-        android:paddingTop="@dimen/margin_5"
-        android:paddingBottom="@dimen/margin_5"
-        android:background="@drawable/editext_drawable"
-        app:layout_constraintTop_toBottomOf="@id/spBedText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"/>
+        <Spinner
+            android:id="@+id/spBedrooms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5"
+            android:entries="@array/bed_rooms"
+            android:spinnerMode="dropdown"
+            android:paddingTop="@dimen/margin_5"
+            android:paddingBottom="@dimen/margin_5"
+            android:background="@drawable/editext_drawable"
+            app:layout_constraintTop_toBottomOf="@id/spBedText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"/>
 
     <ImageView
         android:layout_width="30dp"
@@ -94,31 +94,31 @@
         android:id="@+id/spBedImg"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gender*"
-        android:textSize="18sp"
-        android:layout_marginTop="2dp"
-        android:textColor="#838383"
-        app:layout_constraintTop_toBottomOf="@id/spBedrooms"
-        app:layout_constraintStart_toStartOf="@id/spBedrooms"
-        android:id="@+id/spGen"/>
-    <Spinner
-        android:id="@+id/spGender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_5"
-        android:entries="@array/Gender"
-        android:spinnerMode="dropdown"
-        android:paddingTop="@dimen/margin_5"
-        android:paddingBottom="@dimen/margin_5"
-        android:background="@drawable/editext_drawable"
-        app:layout_constraintTop_toBottomOf="@id/spGen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender*"
+            android:textSize="18sp"
+            android:layout_marginTop="2dp"
+            android:textColor="#838383"
+            app:layout_constraintTop_toBottomOf="@id/spBedrooms"
+            app:layout_constraintStart_toStartOf="@id/spBedrooms"
+            android:id="@+id/spGen"/>
+        <Spinner
+            android:id="@+id/spGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5"
+            android:entries="@array/Gender"
+            android:spinnerMode="dropdown"
+            android:paddingTop="@dimen/margin_5"
+            android:paddingBottom="@dimen/margin_5"
+            android:background="@drawable/editext_drawable"
+            app:layout_constraintTop_toBottomOf="@id/spGen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"/>
 
     <ImageView
         android:layout_width="30dp"

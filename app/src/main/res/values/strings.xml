@@ -10,4 +10,45 @@
     <string name="profile">Profile</string>
     <string name="post">Post</string>
     <string name="favourites">Favourites</string>
+    <string name="title_activity_spalsh_screen">SpalshScreen</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="bed_rooms">
+        <item>Select Bed Rooms</item>
+        <item>1 BHK</item>
+        <item>2 BHK</item>
+        <item>3 BHK</item>
+        <item>4 BHK</item>
+    </string-array>
+
+    <string-array name="unit_type">
+        <item>Select Unit Type</item>
+        <item>Independent</item>
+        <item>Apartment</item>
+        <item>Duplex</item>
+        <item>Triplex</item>
+    </string-array>
+
+    <string-array name="Gender">
+        <item>Select Your Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+<!--    //for scheduling-->
+
+    <string name="schedule">DatePicker</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="date_label_set">Press the button to set the date</string>
+    <string name="date_button_set">Set Date</string>
+    <string name="date_view_set">The Date is: </string>
+    <string name="date_selected">Data</string>
+
 </resources>

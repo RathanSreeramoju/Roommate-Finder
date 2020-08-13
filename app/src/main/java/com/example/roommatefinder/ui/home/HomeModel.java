@@ -1,10 +1,11 @@
-package com.example.roommatefinder.ui.favourites;
+package com.example.roommatefinder.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class FavouriteViewModel  {
+public class HomeModel extends ViewModel {
+    //data snapshot string depends on this variable of string
     private String postKey;
     private String txt_title;
     private String txt_desc;
@@ -15,7 +16,7 @@ public class FavouriteViewModel  {
     private String txt_contact;
     private String userPhoto;
 
-    public FavouriteViewModel(){
+    public HomeModel() {
 
     }
 

@@ -1,6 +1,5 @@
 package com.example.roommatefinder.ui.filter;
 
-
 public class FilterInfo {
     private String  selectedInputType;
     private String  selectedBedRooms;
@@ -34,4 +33,3 @@ public class FilterInfo {
         return selectedLocation;
     }
 }
-

@@ -1,22 +1,31 @@
-package com.example.roommatefinder.ui.favourites;
+package com.example.roommatefinder.ui.post;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
-public class FavouriteViewModel  {
+public class Post {
     private String postKey;
     private String txt_title;
     private String txt_desc;
 
-    private String txt_Price;
+    private String txt_roommates;
     private String txt_gender;
     private String txt_loc;
     private String txt_contact;
     private String userPhoto;
+    private String txt_price;
 
-    public FavouriteViewModel(){
 
+    public Post(){
+
+    }
+
+    public Post(String postKey, String txt_title, String txt_desc, String txt_price, String txt_gender, String txt_loc, String txt_contact, String userPhoto) {
+        this.postKey = postKey;
+        this.txt_title = txt_title;
+        this.txt_desc = txt_desc;
+        this.txt_price = txt_price;
+        this.txt_gender = txt_gender;
+        this.txt_loc = txt_loc;
+        this.txt_contact = txt_contact;
+        this.userPhoto = userPhoto;
     }
 
     public String getPostKey() {
@@ -32,7 +41,7 @@ public class FavouriteViewModel  {
     }
 
     public String getTxt_Price() {
-        return txt_Price;
+        return txt_price;
     }
 
     public String getTxt_gender() {
