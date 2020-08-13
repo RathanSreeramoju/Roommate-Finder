@@ -1,4 +1,3 @@
-
 package com.example.roommatefinder.ui.filter;
 
 import android.content.Context;
@@ -42,12 +41,8 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
     private List<FavouriteViewModel> modelsForFav = new ArrayList<FavouriteViewModel>();
     private DatabaseReference databaseReference,databaseReferenceForFav,databaseReferenceForPrice,getGetDatabaseReferenceForLocation,databaseBasedOnLocationAndPrice;
     private String location,flate_type,unit_type,price;
-<<<<<<< HEAD
     private int intPrice = 0;
 
-=======
-    private int intPrice=0;
->>>>>>> 6f4c6b04ca07a269dff7b5a837dbb71fce042c62
 
 
     public FiltrateUserFragment() {
@@ -77,7 +72,7 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       view = inflater.inflate(R.layout.fragment_filtrate_user, container, false);
+        view = inflater.inflate(R.layout.fragment_filtrate_user, container, false);
         recyclerView = view.findViewById(R.id.recycler);
         adapter = new HomeAdapter(false,sharedPref.UserId,context,models,modelsForFav);
         recyclerView.setAdapter(adapter);
@@ -92,36 +87,28 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
             location = getArguments().getString("location");
             unit_type = getArguments().getString("unitType");
             price     = getArguments().getString("price");
-<<<<<<< HEAD
-               intPrice = Integer.parseInt(price);
-=======
-//            intPrice = Integer.parseInt(price);
->>>>>>> 6f4c6b04ca07a269dff7b5a837dbb71fce042c62
+            intPrice = Integer.parseInt(price);
             flate_type = getArguments().getString("beds");
 
             System.out.println("location__ "+location+"  unit_type  "+unit_type+"  price  "+price +"  flate_type "+flate_type);
 
 
-                databaseReference = FirebaseDatabase.getInstance().getReference("FilterDatabase"+unit_type+flate_type+price+location);
+            databaseReference = FirebaseDatabase.getInstance().getReference("FilterDatabase"+unit_type+flate_type+price+location);
 
 
-                    databaseBasedOnLocationAndPrice = FirebaseDatabase.getInstance().getReference("FilterDatabaseBasedOnLocationAndPrice"+location+price);
+            databaseBasedOnLocationAndPrice = FirebaseDatabase.getInstance().getReference("FilterDatabaseBasedOnLocationAndPrice"+location+price);
 
-                        getGetDatabaseReferenceForLocation = FirebaseDatabase.getInstance().getReference("FilterDatabaseBasedOnLocation"+location);
+            getGetDatabaseReferenceForLocation = FirebaseDatabase.getInstance().getReference("FilterDatabaseBasedOnLocation"+location);
 
 
-<<<<<<< HEAD
-                        //    databaseReferenceForPrice = FirebaseDatabase.getInstance().getReference("FilterDatabaseBasedOnPrice" + price);
-=======
-                            databaseReferenceForPrice = FirebaseDatabase.getInstance().getReference("FilterDatabaseBasedOnPrice" + price);
->>>>>>> 6f4c6b04ca07a269dff7b5a837dbb71fce042c62
+            //    databaseReferenceForPrice = FirebaseDatabase.getInstance().getReference("FilterDatabaseBasedOnPrice" + price);
 
 
             databaseReferenceForFav = FirebaseDatabase.getInstance().getReference("FavouriteData"+sharedPref.UserId);
         }catch (Exception e){
             Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-       return  view;
+        return  view;
     }
 
     @Override
@@ -139,7 +126,6 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
             public void run() {
 //                databaseReferenceForPrice.addValueEventListener(this);
                 getP();
-<<<<<<< HEAD
 
             }
         },2000);
@@ -238,51 +224,8 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
 //                        rel.setVisibility(View.VISIBLE);
 //
 //                    }
-=======
 
-            }
-        },2000);
 
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                ProgressDialog.progressDialog.dismiss();
-//                if(snapshot.getValue()==null){
-//                    RelativeLayout rel=view.findViewById(R.id.rel);
-//                    rel.setVisibility(View.VISIBLE);
-//                }
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    String key = dataSnapshot.getKey();
-//                    Object value = dataSnapshot.getValue();
-//
-//                    System.out.println("name of user___" + value.toString());
-//                    HomeModel homeModel = dataSnapshot.getValue(HomeModel.class);
-//
-//                    models.add(homeModel);
-//                }
-//
-//
-//                adapter.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                ProgressDialog.progressDialog.dismiss();
-//                Toast.makeText(context, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        //for fav check
-        forFav();
-
-    }
->>>>>>> 6f4c6b04ca07a269dff7b5a837dbb71fce042c62
-
-    private void getP() {
-//        private String location,flate_type,unit_type,price;
-        if(location!=null&&flate_type!=null&&!flate_type.equals("Select Bed Rooms")&&unit_type!=null&&!unit_type.equals("Select Unit Type")&&price!=null){
-
-<<<<<<< HEAD
                 }
 
                 @Override
@@ -298,36 +241,6 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
     }
 
 
-=======
-            databaseReference.addValueEventListener(this);
-
-        }else {
-            if(location!=null&&price!=null){
-                databaseBasedOnLocationAndPrice.addValueEventListener(this);
-
-            }else {
-                if(price!=null){
-
-                    databaseReferenceForPrice.addValueEventListener(this);
-
-                } else {
-                    if(location!=null){
-                        getGetDatabaseReferenceForLocation.addValueEventListener(this);
-
-                    }
-                }
-            }
-
-
-        }
-
-
-
-
-
-    }
-
->>>>>>> 6f4c6b04ca07a269dff7b5a837dbb71fce042c62
     private void forFav() {
 
         databaseReferenceForFav.addValueEventListener(new ValueEventListener() {
@@ -355,23 +268,23 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
         ProgressDialog.progressDialog.dismiss();
         System.out.println("value___"+snapshot.getValue()+"count___"+snapshot.getChildrenCount()+"snapshot___"+snapshot.hasChildren());
 
-                if(snapshot.getValue()==null){
-                    RelativeLayout rel=view.findViewById(R.id.rel);
-                    rel.setVisibility(View.VISIBLE);
-                }
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String key = dataSnapshot.getKey();
-                    System.out.println("key__"+key+"");
-                    Object value = dataSnapshot.getValue();
+        if(snapshot.getValue()==null){
+            RelativeLayout rel=view.findViewById(R.id.rel);
+            rel.setVisibility(View.VISIBLE);
+        }
+        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+            String key = dataSnapshot.getKey();
+            System.out.println("key__"+key+"");
+            Object value = dataSnapshot.getValue();
 
-                    System.out.println("name of user___" + value.toString());
-                    HomeModel homeModel = dataSnapshot.getValue(HomeModel.class);
+            System.out.println("name of user___" + value.toString());
+            HomeModel homeModel = dataSnapshot.getValue(HomeModel.class);
 
-                    models.add(homeModel);
-                }
+            models.add(homeModel);
+        }
 
 
-                adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -379,8 +292,4 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
         ProgressDialog.progressDialog.dismiss();
         Toast.makeText(context, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 6f4c6b04ca07a269dff7b5a837dbb71fce042c62
