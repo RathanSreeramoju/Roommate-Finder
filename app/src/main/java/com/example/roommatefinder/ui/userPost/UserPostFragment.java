@@ -1,25 +1,23 @@
-package com.example.roommatefinder.ui.favourites;
+package com.example.roommatefinder.ui.userPost;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.roommatefinder.R;
 import com.example.roommatefinder.singletone.MySharedPref;
-import com.example.roommatefinder.ui.home.HomeAdapter;
-import com.example.roommatefinder.ui.home.HomeModel;
+import com.example.roommatefinder.ui.favourites.FavAdapter;
+import com.example.roommatefinder.ui.favourites.FavouriteViewModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,8 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavouriteFragment extends Fragment {
-
+public class UserPostFragment extends Fragment {
     private View view;
     private Context context;
     private RecyclerView recyclerView;
@@ -41,8 +38,9 @@ public class FavouriteFragment extends Fragment {
     ///for FirebaseDatabase
     private DatabaseReference databaseReference;
     private MySharedPref sharedPref;
+    private String email;
 
-    public FavouriteFragment(){
+    public UserPostFragment() {
 
     }
 
@@ -54,20 +52,28 @@ public class FavouriteFragment extends Fragment {
         sharedPref = new MySharedPref(context);
         sharedPref.getInstance(context);
         sharedPref.getUserLoggedInData();
-        databaseReference = FirebaseDatabase.getInstance().getReference("FavouriteData"+sharedPref.UserId);
+        if(sharedPref.Email.contains(".")){
+            String[] ema = sharedPref.Email.split("\\.");
+            email =  ema[0];
+            System.out.println("email __"+email);
+
+        }else {
+            email = sharedPref.Email;
+        }
+        databaseReference = FirebaseDatabase.getInstance().getReference("Admin_Email_" +email);
 
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-         view = inflater.inflate(R.layout.fragment_favourite, container, false);
+        view = inflater.inflate(R.layout.fragment_user_post, container, false);
 
         recyclerView = view.findViewById(R.id.recycler);
-        adapter = new FavAdapter(databaseReference,true,sharedPref.UserId,context,models);
+        adapter = new FavAdapter(databaseReference, true, sharedPref.UserId, context, models);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        databaseReference = FirebaseDatabase.getInstance().getReference("FavouriteData"+sharedPref.UserId);
+
 
         return view;
     }
@@ -81,13 +87,12 @@ public class FavouriteFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 //                    System.out.println("name__"+dataSnapshot);
                     String key = dataSnapshot.getKey();
 //                    Object value =  dataSnapshot.getValue();
 
 //                        System.out.println("name of user___"+value.toString());
-
 
 
                     FavouriteViewModel homeModel = dataSnapshot.getValue(FavouriteViewModel.class);
@@ -101,7 +106,7 @@ public class FavouriteFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

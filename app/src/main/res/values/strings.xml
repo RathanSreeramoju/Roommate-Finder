@@ -41,7 +41,7 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
-<!--    //for scheduling-->
+    <!--    //for scheduling-->
 
     <string name="schedule">DatePicker</string>
     <string name="action_settings">Settings</string>

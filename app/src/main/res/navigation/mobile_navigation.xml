@@ -41,4 +41,8 @@
         android:id="@+id/filtrateUserFragment"
         android:name="com.example.roommatefinder.ui.filter.FiltrateUserFragment"
         android:label="FiltrateUserFragment" />
+    <fragment
+        android:id="@+id/userPostFragment"
+        android:name="com.example.roommatefinder.ui.userPost.UserPostFragment"
+        android:label="UserPostFragment" />
 </navigation>

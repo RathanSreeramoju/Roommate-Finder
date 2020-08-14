@@ -34,8 +34,8 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder>{
     private DatabaseReference firebaseDatabase;
     private boolean is_fav;
 
-    public FavAdapter(boolean is_fav,String userId,Context context,List<FavouriteViewModel> favModel){
-
+    public FavAdapter(DatabaseReference firebaseDatabase,boolean is_fav,String userId,Context context,List<FavouriteViewModel> favModel){
+        this.firebaseDatabase = firebaseDatabase;
         this.context = context;
         this.UserId = userId;
         this.is_fav=is_fav;
@@ -62,7 +62,19 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder>{
         holder.gender.setText(model.getTxt_gender());
         holder.contact_number.setText(model.getTxt_contact());
         Glide.with(context).load(model.getUserPhoto()).apply(new RequestOptions().placeholder(R.drawable.profile)).error(R.drawable.profile).into(holder.imageView);
-       holder.star.setVisibility(View.GONE);
+        holder.star.setVisibility(View.GONE);
+        holder.fav_star.setVisibility(View.VISIBLE);
+        holder.fav_star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                favModel.remove(holder.getAdapterPosition());
+                System.out.println("data base child__"+firebaseDatabase.child(model.getPostKey()));
+                firebaseDatabase.child(model.getPostKey()).removeValue();
+                notifyDataSetChanged();
+
+
+            }
+        });
 
 
     }

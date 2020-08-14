@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.roommatefinder.R;
+import com.example.roommatefinder.singletone.GetNavController;
 import com.example.roommatefinder.singletone.MySharedPref;
 import com.example.roommatefinder.ui.home.HomeAdapter;
 import com.example.roommatefinder.ui.home.HomeModel;
@@ -43,7 +44,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileFragment extends Fragment {
     private View view;
     private CircleImageView imageView;
-    private TextView email;
+    private TextView email,myposts;
     private Context context;
     private MySharedPref sharedPref;
     private FirebaseAuth mAuth;
@@ -54,6 +55,7 @@ public class ProfileFragment extends Fragment {
     private RecyclerView recyclerView;
     private DatabaseReference profileDatabase;
     private String email1;
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -86,6 +88,7 @@ public class ProfileFragment extends Fragment {
 
        view = inflater.inflate(R.layout.fragment_profile, container, false);
         recyclerView = view.findViewById(R.id.recycler);
+        myposts = view.findViewById(R.id.mypost);
         adapter = new ProfileAdapter(context,userProfiles);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -99,6 +102,7 @@ public class ProfileFragment extends Fragment {
         imageView = view.findViewById(R.id.profile_image);
         email     = view.findViewById(R.id.email);
         logout    = view.findViewById(R.id.logout);
+        mypostlistener();
 
         try {
             profileDatabase = FirebaseDatabase.getInstance().getReference("Schedule"+email1);
@@ -130,11 +134,21 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    private void mypostlistener() {
+        myposts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetNavController.getNavController().navigate(R.id.userPostFragment);
+            }
+        });
+    }
+
     private void getUserProfileData() {
 
         profileDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userProfiles.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Object value = dataSnapshot.getValue();
                     System.out.println("name of user___" + value.toString());

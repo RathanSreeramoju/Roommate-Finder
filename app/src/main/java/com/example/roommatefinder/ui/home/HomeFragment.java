@@ -141,11 +141,12 @@ public class HomeFragment extends Fragment {
 //        if(isFromFilter){
 //
 //        }else {
-            models.clear();
-            modelsForFav.clear();
+
+
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    models.clear();
                      ProgressDialog.progressDialog.dismiss();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 //                    System.out.println("name__"+dataSnapshot);
@@ -203,6 +204,7 @@ public class HomeFragment extends Fragment {
        databaseReferenceForFav.addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
+               modelsForFav.clear();
                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
 
                    FavouriteViewModel homeModel = dataSnapshot.getValue(FavouriteViewModel.class);

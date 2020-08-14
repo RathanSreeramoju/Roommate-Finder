@@ -60,7 +60,7 @@ public class PostFragment extends Fragment  {
     private Button addBtn;
     private Uri uri  = null;
     private Context context;
-    private DatabaseReference firebaseDatabase,filterDatabase,priceDatabase,locationDatabase,databaseBasedOnPriceAndLocation;
+    private DatabaseReference firebaseDatabase,filterDatabase,priceDatabase,locationDatabase,databaseBasedOnPriceAndLocation,firebaseDatabase1;
     private Bitmap bitmap;
     private MySharedPref sharedPref;
 
@@ -175,7 +175,7 @@ public class PostFragment extends Fragment  {
         super.onViewCreated(root, savedInstanceState);
 
 //        firebaseDatabase = FirebaseDatabase.getInstance().getReference("UserData"+sharedPref.UserId);
-        firebaseDatabase = FirebaseDatabase.getInstance().getReference("post");
+        firebaseDatabase1 = FirebaseDatabase.getInstance().getReference("post");
         firebaseDatabase = FirebaseDatabase.getInstance().getReference("Admin_Email_"+email);
 
 
@@ -227,6 +227,7 @@ public class PostFragment extends Fragment  {
                                         uploadImagesToFirebase(post_key,uri);
                                         getFilterDatabase(location,priceOf,selectedUnitType,selectedBedRooms,post);
                                         firebaseDatabase.child(post_key).setValue(post);
+                                        firebaseDatabase1.child(post_key).setValue(post);
                                         addBtn.setVisibility(View.INVISIBLE);
                                     }
                                 },2000);

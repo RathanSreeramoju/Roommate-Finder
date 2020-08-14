@@ -32,6 +32,7 @@
             app:layout_constraintStart_toStartOf="@id/profile_image"
             app:layout_constraintEnd_toEndOf="@id/profile_image"/>
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -53,6 +54,19 @@
             android:src="@drawable/logout"
             android:id="@+id/logout"
             android:visibility="gone"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#1b262c"
+        android:background="@drawable/userposts_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="8dp"
+        android:text="My Posts"
+        android:id="@+id/mypost"
+        android:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

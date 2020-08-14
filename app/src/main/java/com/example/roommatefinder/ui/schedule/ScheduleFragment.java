@@ -73,6 +73,10 @@ public class ScheduleFragment extends Fragment {
         picker=root.findViewById(R.id.datePicker1);
         btnGet=root.findViewById(R.id.button1);
         title = root.findViewById(R.id.title);
+        Calendar today = Calendar.getInstance();
+        long now = today.getTimeInMillis()+24*60*60*1000;
+
+        picker.setMinDate(now);
         description = root.findViewById(R.id.desc);
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
