@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,6 +18,7 @@ import com.example.roommatefinder.R;
 import com.example.roommatefinder.ui.home.HomeAdapter;
 import com.example.roommatefinder.ui.home.HomeModel;
 import com.example.roommatefinder.ui.post.Post;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,13 +35,15 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder>{
     private String UserId;
     private DatabaseReference firebaseDatabase;
     private boolean is_fav;
+    private DatabaseReference databaseReference;
 
-    public FavAdapter(DatabaseReference firebaseDatabase,boolean is_fav,String userId,Context context,List<FavouriteViewModel> favModel){
-        this.firebaseDatabase = firebaseDatabase;
+    public FavAdapter(DatabaseReference databaseReference,boolean is_fav,String userId,Context context,List<FavouriteViewModel> favModel){
+
         this.context = context;
         this.UserId = userId;
         this.is_fav=is_fav;
         this.favModel=favModel;
+        this.databaseReference=databaseReference;
 
     }
     @NonNull
@@ -68,8 +72,8 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder>{
             @Override
             public void onClick(View view) {
                 favModel.remove(holder.getAdapterPosition());
-                System.out.println("data base child__"+firebaseDatabase.child(model.getPostKey()));
-                firebaseDatabase.child(model.getPostKey()).removeValue();
+                System.out.println("data base child__"+databaseReference.child(model.getPostKey()));
+                databaseReference.child(model.getPostKey()).removeValue();
                 notifyDataSetChanged();
 
 

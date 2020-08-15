@@ -55,19 +55,18 @@ public class FavouriteFragment extends Fragment {
         sharedPref.getInstance(context);
         sharedPref.getUserLoggedInData();
         databaseReference = FirebaseDatabase.getInstance().getReference("FavouriteData"+sharedPref.UserId);
-
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-         view = inflater.inflate(R.layout.fragment_favourite, container, false);
+        view = inflater.inflate(R.layout.fragment_favourite, container, false);
 
         recyclerView = view.findViewById(R.id.recycler);
         adapter = new FavAdapter(databaseReference,true,sharedPref.UserId,context,models);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        databaseReference = FirebaseDatabase.getInstance().getReference("FavouriteData"+sharedPref.UserId);
+
 
         return view;
     }
@@ -76,22 +75,17 @@ public class FavouriteFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        models.clear();
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                models.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-//                    System.out.println("name__"+dataSnapshot);
+
                     String key = dataSnapshot.getKey();
-//                    Object value =  dataSnapshot.getValue();
-
-//                        System.out.println("name of user___"+value.toString());
-
-
 
                     FavouriteViewModel homeModel = dataSnapshot.getValue(FavouriteViewModel.class);
-//                    System.out.println("model class__"+homeModel.getTxt_contact());
+
                     models.add(homeModel);
                 }
                 adapter.notifyDataSetChanged();
