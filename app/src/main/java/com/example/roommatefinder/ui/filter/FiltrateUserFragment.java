@@ -59,7 +59,17 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
         sharedPref.getInstance(context);
         sharedPref.getUserLoggedInData();
         ProgressDialog.progressDialog.show();
+        location = getArguments().getString("location");
+        unit_type = getArguments().getString("unitType");
+        price     = getArguments().getString("price");
+        try {
+            intPrice = Integer.parseInt(price);
+        }catch (Exception e){
+            System.out.println("number format exception__"+e.getMessage());
+        }
+        flate_type = getArguments().getString("beds");
 
+        System.out.println("location__ "+location+"  unit_type  "+unit_type+"  price  "+price +"  flate_type "+flate_type);
     }
 
     @Override
@@ -84,13 +94,7 @@ public class FiltrateUserFragment extends Fragment implements ValueEventListener
 //        }
 
         try {
-            location = getArguments().getString("location");
-            unit_type = getArguments().getString("unitType");
-            price     = getArguments().getString("price");
-            intPrice = Integer.parseInt(price);
-            flate_type = getArguments().getString("beds");
 
-            System.out.println("location__ "+location+"  unit_type  "+unit_type+"  price  "+price +"  flate_type "+flate_type);
 
 
             databaseReference = FirebaseDatabase.getInstance().getReference("FilterDatabase"+unit_type+flate_type+price+location);
